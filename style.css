@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.section-container,
+.content-block,
+.works-grid,
+.profile-summary {
+  width: 90%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ヘッダー設定 */
+header {
+  width: 96%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+  border-bottom: 2px solid #000;
+  margin-bottom: 60px;
+}
+
+header h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 3.5rem;
+  text-align: left;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+header h1 a:hover {
+  opacity: 0.6;
+}
+
+/* セクション共通 */
+.section-title {
+  font-size: 3rem;
+  text-transform: capitalize;
+  margin: 80px auto 10px auto;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.sub-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: -10px auto 30px auto;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* プロフィール */
+.profile-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  margin: 40px auto 60px;
+  text-align: left;
+}
+
+.profile-img {
+  width: 210px;
+  height: 210px;
+  background: #eee;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.profile-info p {
+  margin: 8px 0;
+  font-size: 1.3rem;
+}
+
+
+
+/* スキルゲージ */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 30px;
+  margin: 30px auto;
+  max-width: 600px; 
+  align-items: start;
+}
+
+.skill-wrapper {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.skill-item {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: relative;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.skill-wrapper:hover .skill-item {
+  transform: translateY(-3px);
+}
+
+.skill-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(var(--clr) calc(var(--p, 0) * 1%), transparent 0%);
+}
+
+.skill-item::after {
+  content: "";
+  position: absolute;
+  width: 108px;
+  height: 108px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.skill-item span {
+  position: relative;
+  z-index: 1;
+}
+
+/* スキル説明文（ホバーで開く部分） */
+.skill-detail {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 0.75rem;
+  color: #555;
+  background-color: #f9f9f9;
+  padding: 0 10px;
+  margin-top: 0;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease, border 0.4s ease;
+}
+
+.skill-wrapper.is-open .skill-detail {
+  opacity: 1;
+  max-height: 200px;
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
+/* スキル個別カラー設定 */
+.html {
+  --clr: #e44d26;
+  --target: 75;
+  --p: 0;
+}
+
+.css {
+  --clr: #264de4;
+  --target: 70;
+  --p: 0;
+}
+
+.ps {
+  --clr: #31a8ff;
+  --target: 50;
+  --p: 0;
+}
+
+.figma {
+  --clr: #f24e1e;
+  --target: 80;
+  --p: 0;
+}
+
+.figma::before {
+  background: conic-gradient(#f24e1e, #a259ff, #0acf83 calc(var(--p, 0) * 1%), transparent 0%);
+}
+
+.ae {
+  --clr: #cf96fd;
+  --target: 75;
+  --p: 0;
+}
+
+.pr {
+  --clr: #ea77ff;
+  --target: 85;
+  --p: 0;
+}
+
+.skillmore{
+  text-align: center;
+  margin-top: 5rem;
+}
+
+/* Works & Buttons */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* ------------------------------------- */
+/* Aboutページ詳細（profile.html専用） */
+/* ------------------------------------- */
+.content-block {
+  text-align: left; 
+  margin: 40px auto;
+  max-width: 800px; 
+}
+
+.content-block h3 {
+  display: inline-block;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.competency-list {
+  list-style-type: disc; 
+  padding-left: 24px; 
+  margin: 0;
+  text-align: left;
+}
+
+.competency-list li {
+  margin-bottom: 24px; 
+}
+
+/* リスト内の説明文（pタグ）の微調整 */
+.competency-list li p {
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.work-thumb img {
+  width: 100%;                  /* 横幅は枠いっぱいに広げる */
+  
+  /* 【ここを変更】元の画像と同じ「16:9」の比率を常にキープする */
+  aspect-ratio: 16 / 9;         
+  
+  object-fit: cover;            /* 比率を保ったまま枠を満たす */
+  object-position: center;      /* 1〜3枚目は真ん中基準 */
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease; 
+}
+
+/* 4番目の画像だけ上基準 */
+.work-thumb:nth-child(4) img {
+  object-position: top;         
+}
+
+/* アニメーション */
+.work-thumb:hover img {
+  transform: scale(1.05);       
+}
+
+.more-btn,
+.back-btn {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 40px;
+  text-decoration: none;
+  color: #000;
+  border: 2px solid #000;
+  padding: 6px 50px;
+  font-size: 1rem;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.more-btn:hover,
+.back-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* 実際のサイトへ飛ぶボタン（詳細ページ用） */
+.visit-btn {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 20px; 
+    text-decoration: none;
+    background-color: #000; 
+    color: #fff;
+    border: 2px solid #000;
+    padding: 12px 60px; 
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+}
+
+/* ホバー時のアクション */
+.visit-btn:hover {
+    background-color: #fff; 
+}
+
+/* --- 動画拡大（モーダル）用CSS --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); 
+}
+
+/* 動画自体のサイズ設定 */
+#modal-video {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80vh; 
+    margin-top: 5vh;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+    outline: none; 
+}
+
+/* バツボタン */
+.modal-close-video {
+    position: absolute;
+    top: 20px; right: 40px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1001;
+}
+
+.modal-close-video:hover {
+    color: #bbb;
+}
+
+/* フッター */
+footer {
+  width: 100%;
+  margin-top: 80px;
+  padding: 40px 0;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+}
+
+footer .section-title {
+  color: #fff;
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.contact-message {
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.contact-email {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 3px;
+  margin-bottom: 20px;
+}
+
+.copyright {
+  font-size: 0.65rem;
+  margin-top: 30px;
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
+
+/* モーダル全体の背景  */
+.modal {
+    display: none;    
+    position: fixed;  
+    z-index: 1000;    
+    left: 0;
+    top: 0;
+    width: 100%;        
+    height: 100%;       
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 80%;          
+    max-width: 800px;   
+}
+
+
+#modal-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.modal-close-video {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .profile-summary {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 300px;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-top: 50px;
+  }
+}
+
+/* モーダル全体の背景（最初は非表示） */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* モーダルが表示されたときのスタイル */
+.modal.is-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    color: #bbb;
+}
+
+.main-work-img{
+  width: 601px;
+  height: 338px;
+  object-fit: cover;
+  object-position: top;
+}
